@@ -4,6 +4,8 @@ import com.hbm.util.CompatExternal;
 import com.thaumicntm.inventory.FluidPatchListener;
 import com.thaumicntm.inventory.mats.ThaumMats;
 import com.thaumicntm.inventory.mats.ThaumOreDict;
+import com.thaumicntm.inventory.recipes.ThaumArcaneWorkbenchRecipes;
+import com.thaumicntm.inventory.recipes.ThaumCrucibleRecipes;
 import com.thaumicntm.inventory.recipes.ThaumInfusionRecipes;
 import com.thaumicntm.research.ThaumResearchRegistry;
 import cpw.mods.fml.common.Mod;
@@ -35,7 +37,7 @@ public class MainRegistry {
     // etc, and register them with the GameRegistry."
     public void preInit(FMLPreInitializationEvent event) {
         proxy.preInit(event);
-        
+
         ThaumMats.MAT_THAUMIUM.getUnlocalizedName();
         ThaumNTMItems.mainRegistry();
         ThaumOreDict.registerResources();
@@ -55,6 +57,8 @@ public class MainRegistry {
     // postInit "Handle interaction with other mods, complete your setup based on this."
     public void postInit(FMLPostInitializationEvent event) {
         proxy.postInit(event);
+        ThaumArcaneWorkbenchRecipes.registerRecipes();
+        ThaumCrucibleRecipes.registerRecipes();
 		ThaumInfusionRecipes.registerRecipes();
 		ThaumResearchRegistry.initResearchRegistry();
     }

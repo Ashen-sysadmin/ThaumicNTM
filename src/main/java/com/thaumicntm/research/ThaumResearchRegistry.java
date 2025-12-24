@@ -2,6 +2,7 @@ package com.thaumicntm.research;
 
 
 import com.hbm.items.ModItems;
+import com.thaumicntm.inventory.recipes.ThaumCrucibleRecipes;
 import com.thaumicntm.inventory.recipes.ThaumInfusionRecipes;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.ResourceLocation;
@@ -25,7 +26,7 @@ public class ThaumResearchRegistry {
 			new ResourceLocation("thaumicntm","textures/misc/researchtab.png"),
 			new ResourceLocation("thaumcraft", "textures/gui/gui_researchback.png"));
 	}
-	
+
 	public static void registerResearch(){
 
 		//APOCALYPSE LORE
@@ -98,7 +99,26 @@ public class ThaumResearchRegistry {
 		// NITANFUEL
 
 		// STARMETAL
-
+        ResearchItem starMetal;
+        ResearchPage starMetalPage1;
+        ResearchPage starMetalPage2;
+        starMetal = new ResearchItem(
+            "STARMETAL",
+            "ALCHEMY",
+            (new AspectList()).add(Aspect.MECHANISM,6).add(Aspect.POISON,6).add(Aspect.AIR, 6),
+            -3,
+            1,
+            1,
+            new ItemStack(ModItems.ingot_starmetal)
+        );
+        starMetalPage1 = new ResearchPage("starMetalPage1");
+        starMetalPage2 = new ResearchPage(ThaumCrucibleRecipes.recipeStarMetal);
+        starMetal.setPages(
+            starMetalPage1,
+            starMetalPage2
+        );
+        starMetal.setParents("THAUMIUM");
+        ResearchCategories.addResearch(starMetal);
 
 
 	}
